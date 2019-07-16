@@ -3,4 +3,4 @@
 
 ### 基础考点
 #### 01 节流
-#### [02 防抖](./basic/02 debounce.html)
+#### [02 防抖](./basic/02_debounce.html)
