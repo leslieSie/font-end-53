@@ -1,6 +1,6 @@
-# font-end-note
-前端个人知识点整理和试题修炼
+# font-end-53
+前端的五年高考三年模拟
 
 ### 基础考点
-#### 01 节流
-#### [02 防抖](./basic/02_debounce.html)
+#### 01.节流
+#### [02.防抖](./basic/02_debounce.html)
