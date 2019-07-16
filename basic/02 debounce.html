@@ -1,0 +1,38 @@
+<!--
+ * @Author: leslie
+ * @Version: MIT
+ -->
+<html>
+
+<body>
+    <button id="debounce">节流及其传参</button>
+</body>
+
+</html>
+<script>
+    /**
+     * 防抖：触发高频事件后n秒内函数只会执行一次，如果n秒内高频事件再次被触发，则重新计算时间 
+     * 思路：每次触发事件时都取消之前的延时调用方法
+     * 补充：防抖的传参通过一级一级获取传递arguments的方法实现
+     */
+    var debounce = function (fn) {
+        var timeout;
+        var args = [].slice.call(arguments);
+        return function () {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                fn.apply(this, args.slice(1, args.length));
+            }, 1000);
+        }
+    }
+    let say = function () {
+        console.log(arguments);
+    }
+    let deb = document.querySelector('#debounce');
+    deb.addEventListener('click', debounce(say, {
+        a: 1,
+        b: 2
+    }));
+
+
+</script>
