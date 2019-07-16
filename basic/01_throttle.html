@@ -1,0 +1,31 @@
+<html>
+
+<body>
+    <button id="throttle">节流测试</button>
+</body>
+
+</html>
+<script>
+    /**
+     * 节流：高频事件触发，但在n秒内只会执行一次，所以节流会稀释函数的执行频率
+     * 思路：每次触发事件时都判断当前是否有等待执行的延时函数
+     */
+    var throttle = function(fn) {
+        let hasRun = false;
+        return function() {
+            if (hasRun) { // 判断是否有正在运行的定时器
+                return false;
+            }
+            hasRun = true;
+            setTimeout(() => {
+                hasRun = false;
+                fn.apply(this);
+            }, 2000);
+        }
+    };
+    var say = function() {
+        alert('hello')
+    }
+    var thr = document.querySelector('#throttle');
+    thr.addEventListener('click', throttle(say));
+</script>
