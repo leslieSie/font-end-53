@@ -1,0 +1,19 @@
+<script>
+    /*
+    *   思路：
+    */
+    function instanceOf(L, R) {// L代表左表达式，R代表右表达式
+        let O = R.prototype; // 取R的显示原型
+        L = L.__proto__; // 取L的隐式原型
+        while (true) {
+            if (L == null) {
+                return false;
+            }
+            if (L == O) {
+                return true;
+            }
+            L = L.__proto__; // 继续沿着原型链向上查找
+        }
+    }
+    
+</script>
