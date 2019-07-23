@@ -1,0 +1,22 @@
+<html>
+
+<body>
+    <div id="content">1</div>
+    <button id="btn">点击加一</button>
+</body>
+
+</html>
+<script>
+    // Object.defineProperty()
+    var person = {
+        name: 'leslie',
+        province: '广东省',
+        city: '汕头市'
+    }
+    var p = new Proxy({}, {
+        get(target, name) {
+            debugger;
+        }
+    });
+    p.test.address
+</script>

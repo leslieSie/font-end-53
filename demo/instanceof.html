@@ -1,8 +1,10 @@
 <script>
     /*
-    *   思路：
-    */
-    function instanceOf(L, R) {// L代表左表达式，R代表右表达式
+     *   思路：右表达式获取原型，左表达式一级一级的通过原型向上查找，如果没有找到跟R.prototype
+     *   相匹配的，返回false
+     */
+    function instanceOf(L, R) {
+        // L代表左表达式，R代表右表达式
         let O = R.prototype; // 取R的显示原型
         L = L.__proto__; // 取L的隐式原型
         while (true) {
@@ -15,5 +17,4 @@
             L = L.__proto__; // 继续沿着原型链向上查找
         }
     }
-    
 </script>
