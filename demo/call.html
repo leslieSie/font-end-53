@@ -1,0 +1,31 @@
+<script>
+    let Person = {
+        name: 'Tom',
+        say(year) {
+            console.log(`I am ${this.name},and I am ${year} years old`);
+        }
+    }
+
+    changePerson = {
+        name: 'leslieSie',
+        say() {
+            console.log('changePerson inner');
+        }
+    }
+    /**
+     * 思路：将this指向的方法挂载到要绑定的context对象里面，然后对context里面的对象进行调用
+     * 提示：1. 需要注意在被挂载的对象里面可能存在一个相同命名的函数
+     *      2. 如果没有传入指向要将其指定要window上面
+     *      3. 支持call参数的传入
+     */
+    Function.prototype.MyCall = function (context) {
+        context = context || window; // 添加默认指向，没有指定绑定对象的时候绑定到window
+        // 因为可能在 changePserson 对象下面本来就有say方法，所以需要构建一个唯一的属性来作为函数调用
+        let unique_func = Symbol('say');
+        context[unique_func] = this;
+        let arrParams = [...arguments].slice(1);
+        context[unique_func](...arrParams);
+    }
+    // 测试
+    Person.say.MyCall(changePerson, '25');
+</script>
