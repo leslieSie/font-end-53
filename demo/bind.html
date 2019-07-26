@@ -2,38 +2,37 @@
     /*
      * 思路：将bind传入参数和调用时传入的参数放到两个不同的数组里面，最后将其合并，bind调用之后返回一个apply的句柄
      */
-     let Person = {
-            name: 'Tom',
-            say() {
-                console.log(this)
-                console.log(`我叫${this.name}`)
-            }
+    let Person = {
+        name: 'Tom',
+        say() {
+            console.log(`我叫${this.name}，我的爱好是${arguments[0]}`);
         }
+    };
 
-        // 先看代码执行效果
-        Person.say() //我叫Tom 
-        Person1 = {
-            name: 'leslie'
-        }
-     Function.prototype.bind = function(context) {
-            //返回一个绑定this的函数，我们需要在此保存this
-            let self = this
-                // 可以支持柯里化传参，保存参数
-            let arg = [...arguments].slice(1)
-                // 返回一个函数
-            return function() {
-                //同样因为支持柯里化形式传参我们需要再次获取存储参数
-                let newArg = [...arguments]
-                console.log(newArg)
-                    // 返回函数绑定this，传入两次保存的参数
-                    //考虑返回函数有返回值做了return
-                return self.apply(context, arg.concat(newArg))
-            }
-        }
+    // 先看代码执行效果
+    // Person.say(); // 我叫Tom 
 
-        // 搞定测试
-        let fn = Person.say.bind(Person1);
-        debugger;
-        fn()
-        fn(18)
+    Person1 = {
+        name: 'leslie'
+    };
+
+    Function.prototype.bind = function (context) {
+        // 返回一个绑定this的函数，我们需要在此保存this
+        let self = this;
+        // 可以支持柯里化传参，保存参数
+        let arg = [...arguments].slice(1);
+        // 返回一个函数
+        return function () {
+            //同样因为支持柯里化形式传参我们需要再次获取存储参数
+            let newArg = [...arguments];
+            // 返回函数绑定this，传入两次保存的参数
+            // 考虑返回函数有返回值做了return
+             return self.apply(context, arg.concat(newArg))
+        };
+    };
+
+    // 搞定测试
+    let fn = Person.say.bind(Person1, 'basketball');
+    // fn();
+    fn(18);
 </script>
