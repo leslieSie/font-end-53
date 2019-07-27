@@ -15,24 +15,28 @@
      * 思路：每次触发事件时都取消之前的延时调用方法
      * 补充：防抖的传参通过一级一级获取传递arguments的方法实现
      */
-    var debounce = function (fn) {
+    var debounce = function(fn) {
         var timeout;
-        var args = [].slice.call(arguments);
-        return function () {
+        return function() {
             clearTimeout(timeout);
+            let args = [].slice.call(arguments);
             timeout = setTimeout(() => {
                 fn.apply(this, args.slice(1, args.length));
             }, 1000);
         }
     }
-    let say = function () {
+
+    let say = function() {
         console.log(arguments);
     }
+
     let deb = document.querySelector('#debounce');
-    deb.addEventListener('click', debounce(say, {
-        a: 1,
-        b: 2
-    }));
 
-
+    let debounceObj = new debounce(say)
+    deb.addEventListener('click', () => {
+        debounceObj({
+            a: 1,
+            b: 2
+        });
+    });
 </script>

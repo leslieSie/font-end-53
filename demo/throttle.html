@@ -24,8 +24,11 @@
         }
     };
     var say = function() {
-        alert('hello')
+        console.log('hello')
     }
     var thr = document.querySelector('#throttle');
-    thr.addEventListener('click', throttle(say));
+    let p = new throttle(say);
+    thr.addEventListener('click', () => {
+        p();
+    });
 </script>
