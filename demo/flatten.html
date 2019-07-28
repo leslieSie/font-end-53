@@ -1,0 +1,44 @@
+<script>
+    // es6实现数组扁平化
+    let insert = [3, 4];
+    console.log([1, 2, ...insert]);
+
+    // es6扁平化第二种写法
+    var arr2 = [1, 2, [3, 4]];
+    console.log([].concat(...arr2));
+
+    // 递归,较为通用的一种做法，循环检测元素的类型，如果是为数组的话，进行合并(concat),
+    // 否则将内容push进数组
+    var arr = [1, [2, [3, 4]]];
+
+    function flatten(arr) {
+        var result = [];
+        for (var i = 0, len = arr.length; i < len; i++) {
+            if (Array.isArray(arr[i])) {
+                result = result.concat(flatten(arr[i]))
+            } else {
+                result.push(arr[i])
+            }
+        }
+        return result;
+    }
+
+    console.log(flatten(arr));
+
+    // 使用toString方法来处理，适用于都是都是数字或者都是数组
+    function flatten1() {
+        return ['1', '2', ['3', '4']].toString().split(',');
+    }
+    console.log(flatten1());
+
+    // reduce
+    var arr = [1, [2, [3, 4]]];
+
+    function flatten3(arr) {
+        return arr.reduce(function(prev, next) {
+            return prev.concat(Array.isArray(next) ? flatten(next) : next)
+        }, [])
+    }
+
+    console.log(flatten3(arr))
+</script>

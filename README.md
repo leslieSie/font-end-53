@@ -20,6 +20,12 @@
 
 #### [手写记忆函数](./demo/memorize.html)
 
+#### [手写数组去重](./demo/ArrayUnique.html)
+
+#### [手写柯里化函数](./demo/curry.html)
+
+#### [手写数组扁平化](./demo/flatten.html)
+
 #### [手写 Promise](./demo/promise.html)
 
 #### [手写 async/await](./demo/asyncAwait.html)
