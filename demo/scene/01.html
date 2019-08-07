@@ -1,0 +1,69 @@
+<html>
+
+<body>
+    <p>实现的效果如图所示：</p>
+    <img src="../../demo-image/scene01.jpg" />
+</body>
+<script>
+    // 先通过把对应的定时器写入到一个公共可访问的数组中,也就是将所有的函数定义写入到数组中
+    // 然后通过依次对数组中的定时器进行执行操作，每次只执行一个定时器在线执行
+    class LazyManClass {
+        constructor(name) {
+            var that = this;
+            this.taskList = [];
+            this.name = name;
+            console.log(`Hi I am ${this.name}`);
+            setTimeout(() => {
+                this.next(); // 触发下一个定时器的执行
+            }, 0);
+        }
+        eat(name) {
+            var that = this;
+            var fn = (function (n) {
+                return function () {
+                    console.log(`I am eating ${n}`)
+                    that.next();
+                }
+            })(name);
+            this.taskList.push(fn);
+            return this;
+        }
+        sleepFirst(time) {
+            var that = this;
+            var fn = (function (t) {
+                return function () {
+                    setTimeout(() => {
+                        console.log(`等待了${t}秒...`)
+                        that.next();
+                    }, t * 1000);
+                }
+            })(time);
+            this.taskList.unshift(fn);
+            return this;
+        }
+        sleep(time) {
+            var that = this
+            var fn = (function (t) {
+                return function () {
+                    setTimeout(() => {
+                        console.log(`等待了${t}秒...`)
+                        that.next();
+                    }, t * 1000);
+                }
+            })(time);
+            this.taskList.push(fn);
+            return this;
+        }
+        next() {
+            var fn = this.taskList.shift();
+            fn && fn();
+        }
+    }
+    function LazyMan(name) {
+        return new LazyManClass(name);
+    }
+    // LazyMan('Tony')
+    LazyMan('Tony').eat('lunch').eat('dinner').sleepFirst(3).sleep(4).sleep(2).eat('junk food');
+</script>
+
+</html>
