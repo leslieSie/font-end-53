@@ -1,11 +1,81 @@
 <html>
 
 <body>
-    <div>第一种</div>
     <div>
-            <div style="display: inline-block;width:200px;height:200px;background: red"></div>
+        <p>第一种</p>
+        <div class="parent parent-1">
+            <div style="display:inline-block;height:150px;width:150px;background:lightblue"></div>
+        </div>
     </div>
-    
+    <div>
+        <p>flex布局实现居中第二种解</p>
+        <div class="parent parent-2">
+            <div class="child child-2"></div>
+        </div>
+    </div>
+    <div>
+        <p>第二种</p>
+        <div class="parent parent-3">
+            <div class="child child-3"></div>
+        </div>
+    </div>
+
+    <div>
+        <p>第三种</p>
+        <div class="parent parent-4">
+            <div class="child child-4"></div>
+        </div>
+    </div>
 </body>
+<style>
+    .parent {
+        height: 250px;
+    }
+    
+    .child {
+        width: 150px;
+        height: 150px;
+        display: inline-block;
+        background: lightblue;
+    }
+    /* flex布局 */
+    
+    .parent-1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .parent-2 {
+        display: flex;
+    }
+    
+    .child-2 {
+        margin: auto;
+    }
+    /* absolute与relative组合布局 */
+    
+    .parent-3 {
+        position: relative;
+        top: 10px;
+    }
+    
+    .child-3 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    /* 使用grid布局 */
+    
+    .parent-4 {
+        display: grid;
+    }
+    
+    .child-4 {
+        justify-self: center;
+        align-self: center;
+    }
+</style>
 
 </html>

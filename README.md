@@ -45,6 +45,7 @@
 #### [实现特定场景下的链式调用](./demo/scene/01.html)
 
 #### [实现特定场景下对象转数组](./demo/scene/02.html)
+
 #### [如何把一个字符串的大小写取反（大写变小写小写变大写），例如 ’AbC' 变成 'aBc'](./demo/scene/03.html)
 
 > 论述题
@@ -52,6 +53,8 @@
 #### [分析比较 opacity: 0、visibility: hidden、display: none 优劣和适用场景](./demo/description/01.md)
 
 #### [关于 const 和 let 声明的变量不在 window 上](./demo/description/02.md)
+
+#### [Vue 的响应式原理中 Object.defineProperty 有什么缺陷？](./demo/description/03.md)
 
 ### javaScript 提高题
 
