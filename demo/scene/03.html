@@ -1,0 +1,11 @@
+<script>
+    // 思路：判断当前的字符与小写的字符是否一致，一直则为需要转大写，否则，转小写
+    var str = "AbC";
+    function dealString(str) {
+        let returnArray = str.split("").map(char => {
+            return char == char.toLowerCase() ? char.toUpperCase() : char.toLowerCase();
+        });
+        return returnArray.join("");
+    }
+    console.log(dealString(str));
+</script>
