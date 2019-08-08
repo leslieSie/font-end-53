@@ -5,24 +5,11 @@
     <img src="../../demo-image/scene02.png" />
 </body>
 <script>
-    var data = {
-        1: 222,
-        2: 123,
-        5: 888
-    };
-
-    function result(obj) {
-        let returnArray = [];
-        for (let i = 1; i <= 12; i++) {
-            if (data.hasOwnProperty(i)) {
-                returnArray.push(obj[i]);
-            } else {
-                returnArray.push(null);
-            }
-        }
-        return returnArray;
-    }
-    console.log(result(data));
+    // 利用Array.from浅拷贝来实现
+    let copyArray = Array.from({ length: 12 }, (val, key) => {
+        return ({ 1: 222, 2: 123, 5: 888 }[key + 1] || null)
+    });
+    console.log(copyArray);
 </script>
 
 </html>
