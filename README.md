@@ -46,6 +46,9 @@
 
 #### [实现特定场景下对象转数组](./demo/scene/01.html)
 
+> 论述题
+#### [分析比较 opacity: 0、visibility: hidden、display: none 优劣和适用场景](./demo/description/01.md)
+
 ### javaScript 提高题
 
 > 手写 JavaScript 工具
