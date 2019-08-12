@@ -34,7 +34,7 @@
 
 #### [手写 async/await](./demo/writeBase/asyncAwait.html)
 
-#### [手写数据绑定](./demo/writeBase/dataBind.html)
+#### [使用 JavaScript Proxy 实现简单的数据绑定](./demo/writeBase/dataBind.html)
 
 #### [手写 new 操作符](./demo/writeBase/new.html)
 

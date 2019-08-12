@@ -1,22 +1,29 @@
-<html>
-
 <body>
-    <div id="content">1</div>
-    <button id="btn">点击加一</button>
-</body>
-
-</html>
-<script>
-    // Object.defineProperty()
-    var person = {
-        name: 'leslie',
-        province: '广东省',
-        city: '汕头市'
-    }
-    var p = new Proxy({}, {
-        get(target, name) {
-            debugger;
+    hello,world
+    <input type="text" id="model">
+    <p id="word"></p>
+  </body>
+  <script>
+    const model = document.getElementById("model")
+    const word = document.getElementById("word")
+    var obj= {};
+  
+    const newObj = new Proxy(obj, {
+        get: function(target, key, receiver) {
+          console.log(`getting ${key}!`);
+          return Reflect.get(target, key, receiver);
+        },
+        set: function(target, key, value, receiver) {
+          console.log('setting',target, key, value, receiver);
+          if (key === "text") {
+            // model.value = value;
+            word.innerHTML = value;
+          }
+          return Reflect.set(target, key, value, receiver);
         }
-    });
-    p.test.address
-</script>
+      });
+  
+    model.addEventListener("keyup",function(e){
+      newObj.text = e.target.value
+    })
+  </script>
