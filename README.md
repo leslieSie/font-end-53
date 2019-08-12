@@ -55,6 +55,8 @@
 #### [关于 const 和 let 声明的变量不在 window 上](./demo/description/02.md)
 
 #### [Vue 的响应式原理中 Object.defineProperty 有什么缺陷？](./demo/description/03.md)
+#### [介绍下 webpack 热更新原理，是如何做到在不刷新浏览器的前提下更新页面](./demo/description/04.md)
+#### [数组里面有10万个数据，取第一个元素和第10万个元素的时间相差多少](./demo/description/05.md)
 
 ### javaScript 提高题
 
